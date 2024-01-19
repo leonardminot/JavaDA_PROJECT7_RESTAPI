@@ -13,6 +13,8 @@
 	</div>
 
 	<div class="row">
+		<p th:text="${curvePoint}"></p>
+		<p th:text="${#fields.allErrors()}"></p>
 		<form action="#" th:action="@{/curvePoint/update/{id}(id=${curvePoint.getId()})}" th:object="${curvePoint}" method="post" class="form-horizontal" style="width: 100%">
 			<div class="form-group">
 				<label for="curve-id" class="col-sm-2 control-label">Curve Id</label>

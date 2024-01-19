@@ -21,7 +21,9 @@ public class CurvePoint {
     @NotNull(message = "curvePointId should not be null")
     private Integer curveId;
     private Timestamp asOfDate;
+    @NotNull(message = "term must be not null")
     private Double term;
+    @NotNull(message = "value must be not null")
     private Double value;
     private Timestamp creationDate;
 
@@ -31,6 +33,10 @@ public class CurvePoint {
 
     public Integer getCurveId() {
         return curveId;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Timestamp getAsOfDate() {
