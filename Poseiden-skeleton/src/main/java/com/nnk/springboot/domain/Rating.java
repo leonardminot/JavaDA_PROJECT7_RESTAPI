@@ -27,7 +27,7 @@ public class Rating {
         return id;
     }
 
-    public int getOrderNumber() {
+    public Integer getOrderNumber() {
         return orderNumber;
     }
 
