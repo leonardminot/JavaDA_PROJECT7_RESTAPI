@@ -19,7 +19,6 @@ public class CurvePointService {
     }
 
     public CurvePoint add(CurvePoint curvePointToAdd) {
-        System.out.println(curvePointToAdd);
         return curvePointRepository.save(new CurvePoint(
                 curvePointToAdd.getCurveId(),
                 dateProvider.getNow(),
