@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.optional;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 
@@ -54,7 +53,7 @@ public class TradeServiceTest {
             );
 
             // When
-            Trade savedTrade = tradeService.add(tradeToAdd);
+            tradeService.add(tradeToAdd);
 
             // Then
             then(tradeRepository).should().save(tradeArgumentCaptor.capture());
@@ -77,8 +76,6 @@ public class TradeServiceTest {
         private DateProviderImpl dateProvider;
         @Mock
         private TradeRepository tradeRepository;
-        @Captor
-        private ArgumentCaptor<Trade> tradeArgumentCaptor;
 
         @BeforeEach
         void setUp() {

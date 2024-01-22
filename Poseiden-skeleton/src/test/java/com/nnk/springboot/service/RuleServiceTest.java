@@ -39,7 +39,7 @@ public class RuleServiceTest {
             RuleName ruleNameToAdd = new RuleName("name", "description", "json", "template", "SELECT *", "sqlPart");
 
             // When
-            RuleName savecRuleName = ruleService.add(ruleNameToAdd);
+            ruleService.add(ruleNameToAdd);
 
             // Then
             then(ruleNameRepository).should().save(ruleNameArgumentCaptor.capture());
@@ -58,8 +58,6 @@ public class RuleServiceTest {
         private RuleService ruleService;
         @Mock
         private RuleNameRepository ruleNameRepository;
-        @Captor
-        private ArgumentCaptor<RuleName> ruleNameArgumentCaptor;
 
         @BeforeEach
         void setUp() {

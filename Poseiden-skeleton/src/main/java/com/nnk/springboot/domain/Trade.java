@@ -105,8 +105,9 @@ public class Trade {
         return account;
     }
 
-    public Trade(String account, String toDetermine) {
+    public Trade(String account, String type) {
         this.account = account;
+        this.type = type;
     }
 
     public Trade(String account, String type, Double buyQuantity, Double sellQuantity, Double buyPrice, Double sellPrice, String benchmark) {

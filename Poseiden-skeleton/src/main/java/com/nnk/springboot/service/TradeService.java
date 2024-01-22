@@ -50,6 +50,7 @@ public class TradeService {
                             t.setBuyPrice(trade.getBuyPrice());
                             t.setSellPrice(trade.getSellPrice());
                             t.setBenchmark(trade.getBenchmark());
+                            t.setTradeDate(dateProvider.getNow());
                             tradeRepository.save(t);
                         },
                         () -> {
