@@ -42,20 +42,30 @@ public class TradeController {
 
     @GetMapping("/trade/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        // TODO: get Trade by Id and to model then show to the form
+        if (!model.containsAttribute("trade"))
+            model.addAttribute("trade", tradeService.getById(id));
+        else {
+            Trade existingTrade = (Trade) model.getAttribute("trade");
+            assert existingTrade != null;
+            existingTrade.setTradeId(id);
+        }
         return "trade/update";
     }
 
     @PostMapping("/trade/update/{id}")
     public String updateTrade(@PathVariable("id") Integer id, @Valid Trade trade,
-                             BindingResult result, Model model) {
-        // TODO: check required fields, if valid call service to update Trade and return Trade list
-        return "redirect:/trade/list";
+                             BindingResult result) {
+        if (result.hasErrors())
+            return "/trade/update";
+        else {
+            tradeService.update(trade, id);
+            return "redirect:/trade/list";
+        }
     }
 
     @GetMapping("/trade/delete/{id}")
-    public String deleteTrade(@PathVariable("id") Integer id, Model model) {
-        // TODO: Find Trade by Id and delete the Trade, return to Trade list
+    public String deleteTrade(@PathVariable("id") Integer id) {
+        tradeService.delete(id);
         return "redirect:/trade/list";
     }
 }

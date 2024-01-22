@@ -35,11 +35,42 @@
 					<p class="text-danger" th:if="${#fields.hasErrors('buyQuantity')}" th:errors="*{buyQuantity}"></p>
 				</div>
 			</div>
+			<div class="form-group">
+				<label for="sellQuantity" class="col-sm-2 control-label">Sell Quantity</label>
+				<div class="col-sm-10">
+					<input type="number" th:field="*{sellQuantity}" id="sellQuantity" placeholder="Sell Quantity"
+						   class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('sellQuantity')}" th:errors="*{sellQuantity}"></p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="buyPrice" class="col-sm-2 control-label">Buy Price</label>
+				<div class="col-sm-10">
+					<input type="number" th:field="*{buyPrice}" id="buyPrice" placeholder="Buy Price"
+						   class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('buyPrice')}" th:errors="*{buyPrice}"></p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="sellPrice" class="col-sm-2 control-label">Sell Price</label>
+				<div class="col-sm-10">
+					<input type="number" th:field="*{sellPrice}" id="sellPrice" placeholder="Sell Price"
+						   class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('sellPrice')}" th:errors="*{sellPrice}"></p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="benchmark" class="col-sm-2 control-label">Benchmark</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{benchmark}" id="benchmark" placeholder="Benchmark" class="col-4">
+					<p class="text-danger" th:if="${#fields.hasErrors('benchmark')}" th:errors="*{benchmark}"></p>
+				</div>
+			</div>
 
 
 			<div class="form-group">
 				<div class="col-sm-12">
-					<input type="hidden" th:field="*{id}">
+					<input type="hidden" th:field="*{tradeId}">
 					<a class="btn btn-danger btn-sm" href="/trade/list">Cancel</a>
 					<input class="btn btn-primary btn-sm" type="submit" value="Update Trade">
 				</div>

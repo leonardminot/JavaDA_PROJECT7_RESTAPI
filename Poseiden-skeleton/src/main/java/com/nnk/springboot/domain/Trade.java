@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.sql.Timestamp;
 
@@ -14,22 +16,25 @@ public class Trade {
     @Id
     @GeneratedValue
     private Integer tradeId;
+    @NotBlank(message = "Account must not be empty")
     private String account;
+    @NotBlank(message = "Type must not be empty")
     private String type;
+    @NotNull(message = "Buy Quantity must not be null")
     private Double buyQuantity;
+    @NotNull(message = "Sell quantity must not be null")
     private Double sellQuantity;
+    @NotNull(message = "Buy price must not be null")
     private Double buyPrice;
+    @NotNull(message = "Sell price must not be null")
     private Double sellPrice;
+    @NotBlank(message = "Benchmark must not be empty")
     private String benchmark;
     private Timestamp tradeDate;
 
 
     public void setAccount(String account) {
         this.account = account;
-    }
-
-    public Integer getId() {
-        return tradeId;
     }
 
     public String getType() {
