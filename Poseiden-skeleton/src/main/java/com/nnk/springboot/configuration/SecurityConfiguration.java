@@ -13,12 +13,12 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class securityConfiguration {
+public class SecurityConfiguration {
 
     private final CustomUserDetailService customUserDetailService;
 
     @Autowired
-    public securityConfiguration(CustomUserDetailService customUserDetailService) {
+    public SecurityConfiguration(CustomUserDetailService customUserDetailService) {
         this.customUserDetailService = customUserDetailService;
     }
 
@@ -47,4 +47,6 @@ public class securityConfiguration {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
 }

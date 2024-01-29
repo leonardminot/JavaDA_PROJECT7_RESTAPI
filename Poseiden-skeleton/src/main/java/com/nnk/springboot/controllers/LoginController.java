@@ -14,6 +14,7 @@ public class LoginController {
     @Autowired
     private UserRepository userRepository;
 
+    // Remarque LM : je propose de le supprimer car redondant avec le formulaire de base de Spring Security ?
     @GetMapping("login")
     public ModelAndView login() {
         ModelAndView mav = new ModelAndView();
@@ -21,6 +22,7 @@ public class LoginController {
         return mav;
     }
 
+    // Remarque LM : Je propose de supprimer ce end point car redondant avec le end point user/list ?
     @GetMapping("secure/article-details")
     public ModelAndView getAllUserArticles() {
         ModelAndView mav = new ModelAndView();
@@ -29,6 +31,7 @@ public class LoginController {
         return mav;
     }
 
+    // Important ?
     @GetMapping("error")
     public ModelAndView error() {
         ModelAndView mav = new ModelAndView();
