@@ -7,7 +7,8 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @SequenceGenerator(allocationSize=1, schema="myschema",  name="MySequenceGenerator", sequenceName = "mysequence")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "MySequenceGenerator")
     private Integer id;
     @NotBlank(message = "Username is mandatory")
     private String username;
@@ -55,6 +56,16 @@ public class User {
     }
 
     public void setRole(String role) {
+        this.role = role;
+    }
+
+    public User() {
+    }
+
+    public User(String username, String password, String fullname, String role) {
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
         this.role = role;
     }
 }
