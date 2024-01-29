@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 
 @Controller
 public class BidListController {
@@ -19,10 +21,11 @@ public class BidListController {
         this.bidService = bidService;
     }
 
-    @RequestMapping("/bidList/list")
-    public String home(Model model)
+    @GetMapping("/bidList/list")
+    public String home(Model model, Principal principal)
     {
         model.addAttribute("bidLists", bidService.getAll());
+        model.addAttribute("connectedUser", principal.getName());
         return "bidList/list";
     }
 

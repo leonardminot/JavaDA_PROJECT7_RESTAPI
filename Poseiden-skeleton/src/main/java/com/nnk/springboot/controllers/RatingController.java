@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 
 @Controller
 public class RatingController {
@@ -21,8 +23,9 @@ public class RatingController {
     }
 
     @GetMapping("/rating/list")
-    public String home(Model model) {
+    public String home(Model model, Principal principal) {
         model.addAttribute("ratings", ratingService.getAll());
+        model.addAttribute("connectedUser", principal.getName());
         return "rating/list";
     }
 
