@@ -38,6 +38,19 @@
                 <th>Ask</th>
                 <th>Benchmark</th>
                 <th>Bid List Date</th>
+                <th>Commentary</th>
+                <th>Security</th>
+                <th>Status</th>
+                <th>Trader</th>
+                <th>Book</th>
+                <th>Creation Name</th>
+                <th>Creation Date</th>
+                <th>Revision Name</th>
+                <th>Revision Date</th>
+                <th>Deal Name</th>
+                <th>Deal Type</th>
+                <th>Source List Id</th>
+                <th>Side</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -52,6 +65,19 @@
                 <td th:text="${bidList.ask}"></td>
                 <td th:text="${bidList.benchmark}"></td>
                 <td th:text="${bidList.bidListDate}"></td>
+                <td th:text="${bidList.commentary}"></td>
+                <td th:text="${bidList.security}"></td>
+                <td th:text="${bidList.status}"></td>
+                <td th:text="${bidList.trader}"></td>
+                <td th:text="${bidList.book}"></td>
+                <td th:text="${bidList.creationName}"></td>
+                <td th:text="${bidList.creationDate}"></td>
+                <td th:text="${bidList.revisionName}"></td>
+                <td th:text="${bidList.revisionDate}"></td>
+                <td th:text="${bidList.dealName}"></td>
+                <td th:text="${bidList.dealType}"></td>
+                <td th:text="${bidList.sourceListId}"></td>
+                <td th:text="${bidList.side}"></td>
                 <td style="width: 15%" class="text-center">
                     <a th:href="@{/bidList/update/{id}(id=${bidList.getBidListId()})}">Edit</a>&nbsp;|&nbsp;
                     <a th:href="@{/bidList/delete/{id}(id=${bidList.getBidListId()})}">Delete</a>

@@ -38,6 +38,19 @@
                 <th>Sell Price</th>
                 <th>Benchmark</th>
                 <th>Trade Date</th>
+                <th>Commentary</th>
+                <th>Security</th>
+                <th>Status</th>
+                <th>Trader</th>
+                <th>Book</th>
+                <th>Creation Name</th>
+                <th>Creation Date</th>
+                <th>Revision Name</th>
+                <th>Revision Date</th>
+                <th>Deal Name</th>
+                <th>Deal Type</th>
+                <th>Source List Id</th>
+                <th>Side</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -52,6 +65,19 @@
                 <td th:text="${trade.sellPrice}"></td>
                 <td th:text="${trade.benchmark}"></td>
                 <td th:text="${trade.tradeDate}"></td>
+                <td th:text="${trade.commentary}"></td>
+                <td th:text="${trade.security}"></td>
+                <td th:text="${trade.status}"></td>
+                <td th:text="${trade.trader}"></td>
+                <td th:text="${trade.book}"></td>
+                <td th:text="${trade.creationName}"></td>
+                <td th:text="${trade.creationDate}"></td>
+                <td th:text="${trade.revisionName}"></td>
+                <td th:text="${trade.revisionDate}"></td>
+                <td th:text="${trade.dealName}"></td>
+                <td th:text="${trade.dealType}"></td>
+                <td th:text="${trade.sourceListId}"></td>
+                <td th:text="${trade.side}"></td>
                 <td style="width: 15%" class="text-center">
                     <a th:href="@{/trade/update/{id}(id=${trade.tradeId})}">Edit</a>&nbsp;|&nbsp;
                     <a th:href="@{/trade/delete/{id}(id=${trade.tradeId})}">Delete</a>

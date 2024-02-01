@@ -37,7 +37,7 @@ public class BidService {
                 bidList.getCreationName(),
                 dateProvider.getNow(),
                 bidList.getRevisionName(),
-                dateProvider.getNow(),
+                null,
                 bidList.getDealName(),
                 bidList.getDealType(),
                 bidList.getSourceListId(),
@@ -57,6 +57,7 @@ public class BidService {
         bidListRepository.findById(id)
                 .ifPresentOrElse(
                         bl -> {
+                            System.out.println(bl.getCreationDate());
                             bl.setAccount(bidList.getAccount());
                             bl.setType(bidList.getType());
                             bl.setBidQuantity(bidList.getBidQuantity());
@@ -71,9 +72,9 @@ public class BidService {
                             bl.setTrader(bidList.getTrader());
                             bl.setBook(bidList.getBook());
                             bl.setCreationName(bidList.getCreationName());
-                            bl.setCreationDate(bidList.getCreationDate());
+                            bl.setCreationDate(bl.getCreationDate());
                             bl.setRevisionName(bidList.getRevisionName());
-                            bl.setRevisionDate(bidList.getRevisionDate());
+                            bl.setRevisionDate(dateProvider.getNow());
                             bl.setDealName(bidList.getDealName());
                             bl.setDealType(bidList.getDealType());
                             bl.setSourceListId(bidList.getSourceListId());

@@ -82,7 +82,7 @@ public class BidServiceTest {
             assertThat(bidListArgumentCaptor.getValue().getCreationName()).isEqualTo("creationName");
             assertThat(bidListArgumentCaptor.getValue().getCreationDate()).isEqualTo(now);
             assertThat(bidListArgumentCaptor.getValue().getRevisionName()).isEqualTo("revisionName");
-            assertThat(bidListArgumentCaptor.getValue().getRevisionDate()).isEqualTo(now);
+            assertThat(bidListArgumentCaptor.getValue().getRevisionDate()).isNull();
             assertThat(bidListArgumentCaptor.getValue().getDealName()).isEqualTo("dealName");
             assertThat(bidListArgumentCaptor.getValue().getDealType()).isEqualTo("dealType");
             assertThat(bidListArgumentCaptor.getValue().getSourceListId()).isEqualTo("sourceListId");
@@ -185,6 +185,9 @@ public class BidServiceTest {
         @Test
         void itShouldUpdateABidList() {
             // Given
+            Timestamp creationDate = Timestamp.valueOf(LocalDateTime.of(2023, 12, 25, 12, 0, 0, 0));
+            Timestamp now = Timestamp.valueOf(LocalDateTime.of(2024, 1, 18, 12, 0, 0, 0));
+            given(dateProvider.getNow()).willReturn(now);
             BidList currentBidList = new BidList(
                     "account",
                     "type",
@@ -193,13 +196,16 @@ public class BidServiceTest {
                     30d,
                     40d,
                     "benchmark",
+                    creationDate,
                     "commentary",
                     "security",
                     "status",
                     "trader",
                     "book",
                     "creationName",
+                    creationDate,
                     "revisionName",
+                    null,
                     "dealName",
                     "dealType",
                     "sourceListId",
@@ -214,13 +220,16 @@ public class BidServiceTest {
                     302d,
                     40d,
                     "benchmark updated",
+                    now,
                     "commentary 2",
                     "security 2",
                     "status 2",
                     "trader 2",
                     "book 2",
                     "creationName 2",
+                    creationDate,
                     "revisionName 2",
+                    now,
                     "dealName 2",
                     "dealType 2",
                     "sourceListId 2",
@@ -251,6 +260,10 @@ public class BidServiceTest {
             assertThat(bidListArgumentCaptor.getValue().getDealType()).isEqualTo("dealType 2");
             assertThat(bidListArgumentCaptor.getValue().getSourceListId()).isEqualTo("sourceListId 2");
             assertThat(bidListArgumentCaptor.getValue().getSide()).isEqualTo("side 2");
+
+            assertThat(bidListArgumentCaptor.getValue().getBidListDate()).isEqualTo(now);
+            assertThat(bidListArgumentCaptor.getValue().getCreationDate()).isEqualTo(creationDate);
+            assertThat(bidListArgumentCaptor.getValue().getRevisionDate()).isEqualTo(now);
         }
 
         @Test

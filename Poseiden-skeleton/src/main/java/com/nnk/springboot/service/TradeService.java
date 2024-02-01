@@ -27,7 +27,20 @@ public class TradeService {
                 trade.getBuyPrice(),
                 trade.getSellPrice(),
                 trade.getBenchmark(),
-                dateProvider.getNow()
+                dateProvider.getNow(),
+                trade.getCommentary(),
+                trade.getSecurity(),
+                trade.getStatus(),
+                trade.getTrader(),
+                trade.getBook(),
+                trade.getCreationName(),
+                dateProvider.getNow(),
+                trade.getRevisionName(),
+                null,
+                trade.getDealName(),
+                trade.getDealType(),
+                trade.getSourceListId(),
+                trade.getSide()
         ));
     }
 
@@ -51,6 +64,19 @@ public class TradeService {
                             t.setSellPrice(trade.getSellPrice());
                             t.setBenchmark(trade.getBenchmark());
                             t.setTradeDate(dateProvider.getNow());
+                            t.setCommentary(trade.getCommentary());
+                            t.setSecurity(trade.getSecurity());
+                            t.setStatus(trade.getStatus());
+                            t.setTrader(trade.getTrader());
+                            t.setBook(trade.getBook());
+                            t.setCreationName(trade.getCreationName());
+                            t.setCreationDate(t.getCreationDate());
+                            t.setRevisionName(trade.getRevisionName());
+                            t.setRevisionDate(dateProvider.getNow());
+                            t.setDealName(trade.getDealName());
+                            t.setDealType(trade.getDealType());
+                            t.setSourceListId(trade.getSourceListId());
+                            t.setSide(trade.getSide());
                             tradeRepository.save(t);
                         },
                         () -> {
