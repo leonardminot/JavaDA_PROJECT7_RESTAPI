@@ -49,7 +49,18 @@ public class BidServiceTest {
                     20d,
                     30d,
                     40d,
-                    "benchmark"
+                    "benchmark",
+                    "commentary",
+                    "security",
+                    "status",
+                    "trader",
+                    "book",
+                    "creationName",
+                    "revisionName",
+                    "dealName",
+                    "dealType",
+                    "sourceListId",
+                    "side"
             );
             // When
             bidService.add(bidList);
@@ -64,6 +75,18 @@ public class BidServiceTest {
             assertThat(bidListArgumentCaptor.getValue().getAsk()).isEqualTo(40d);
             assertThat(bidListArgumentCaptor.getValue().getAskQuantity()).isEqualTo(20d);
             assertThat(bidListArgumentCaptor.getValue().getAccount()).isEqualTo("account");
+            assertThat(bidListArgumentCaptor.getValue().getCommentary()).isEqualTo("commentary");
+            assertThat(bidListArgumentCaptor.getValue().getSecurity()).isEqualTo("security");
+            assertThat(bidListArgumentCaptor.getValue().getTrader()).isEqualTo("trader");
+            assertThat(bidListArgumentCaptor.getValue().getBook()).isEqualTo("book");
+            assertThat(bidListArgumentCaptor.getValue().getCreationName()).isEqualTo("creationName");
+            assertThat(bidListArgumentCaptor.getValue().getCreationDate()).isEqualTo(now);
+            assertThat(bidListArgumentCaptor.getValue().getRevisionName()).isEqualTo("revisionName");
+            assertThat(bidListArgumentCaptor.getValue().getRevisionDate()).isEqualTo(now);
+            assertThat(bidListArgumentCaptor.getValue().getDealName()).isEqualTo("dealName");
+            assertThat(bidListArgumentCaptor.getValue().getDealType()).isEqualTo("dealType");
+            assertThat(bidListArgumentCaptor.getValue().getSourceListId()).isEqualTo("sourceListId");
+            assertThat(bidListArgumentCaptor.getValue().getSide()).isEqualTo("side");
         }
     }
 
@@ -169,7 +192,18 @@ public class BidServiceTest {
                     20d,
                     30d,
                     40d,
-                    "benchmark"
+                    "benchmark",
+                    "commentary",
+                    "security",
+                    "status",
+                    "trader",
+                    "book",
+                    "creationName",
+                    "revisionName",
+                    "dealName",
+                    "dealType",
+                    "sourceListId",
+                    "side"
             );
 
             BidList expectedBidList = new BidList(
@@ -179,7 +213,18 @@ public class BidServiceTest {
                     20d,
                     302d,
                     40d,
-                    "benchmark updated"
+                    "benchmark updated",
+                    "commentary 2",
+                    "security 2",
+                    "status 2",
+                    "trader 2",
+                    "book 2",
+                    "creationName 2",
+                    "revisionName 2",
+                    "dealName 2",
+                    "dealType 2",
+                    "sourceListId 2",
+                    "side 2"
             );
             given(bidListRepository.findById(1)).willReturn(Optional.of(currentBidList));
 
@@ -188,14 +233,24 @@ public class BidServiceTest {
 
             // Then
             then(bidListRepository).should().save(bidListArgumentCaptor.capture());
-            assertThat(actualBidList.getBidListId()).isEqualTo(currentBidList.getBidListId());
-            assertThat(actualBidList.getAccount()).isEqualTo("account updated");
-            assertThat(actualBidList.getType()).isEqualTo("type updated");
-            assertThat(actualBidList.getBidQuantity()).isEqualTo(102d);
-            assertThat(actualBidList.getAskQuantity()).isEqualTo(20d);
-            assertThat(actualBidList.getBid()).isEqualTo(302d);
-            assertThat(actualBidList.getAsk()).isEqualTo(40d);
-            assertThat(actualBidList.getBenchmark()).isEqualTo("benchmark updated");
+            assertThat(bidListArgumentCaptor.getValue().getBidListId()).isEqualTo(currentBidList.getBidListId());
+            assertThat(bidListArgumentCaptor.getValue().getAccount()).isEqualTo("account updated");
+            assertThat(bidListArgumentCaptor.getValue().getType()).isEqualTo("type updated");
+            assertThat(bidListArgumentCaptor.getValue().getBidQuantity()).isEqualTo(102d);
+            assertThat(bidListArgumentCaptor.getValue().getAskQuantity()).isEqualTo(20d);
+            assertThat(bidListArgumentCaptor.getValue().getBid()).isEqualTo(302d);
+            assertThat(bidListArgumentCaptor.getValue().getAsk()).isEqualTo(40d);
+            assertThat(bidListArgumentCaptor.getValue().getBenchmark()).isEqualTo("benchmark updated");
+            assertThat(bidListArgumentCaptor.getValue().getCommentary()).isEqualTo("commentary 2");
+            assertThat(bidListArgumentCaptor.getValue().getSecurity()).isEqualTo("security 2");
+            assertThat(bidListArgumentCaptor.getValue().getTrader()).isEqualTo("trader 2");
+            assertThat(bidListArgumentCaptor.getValue().getBook()).isEqualTo("book 2");
+            assertThat(bidListArgumentCaptor.getValue().getCreationName()).isEqualTo("creationName 2");
+            assertThat(bidListArgumentCaptor.getValue().getRevisionName()).isEqualTo("revisionName 2");
+            assertThat(bidListArgumentCaptor.getValue().getDealName()).isEqualTo("dealName 2");
+            assertThat(bidListArgumentCaptor.getValue().getDealType()).isEqualTo("dealType 2");
+            assertThat(bidListArgumentCaptor.getValue().getSourceListId()).isEqualTo("sourceListId 2");
+            assertThat(bidListArgumentCaptor.getValue().getSide()).isEqualTo("side 2");
         }
 
         @Test

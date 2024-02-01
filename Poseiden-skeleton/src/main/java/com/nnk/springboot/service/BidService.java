@@ -28,7 +28,20 @@ public class BidService {
                 bidList.getBid(),
                 bidList.getAsk(),
                 bidList.getBenchmark(),
-                dateProvider.getNow()
+                dateProvider.getNow(),
+                bidList.getCommentary(),
+                bidList.getSecurity(),
+                bidList.getStatus(),
+                bidList.getTrader(),
+                bidList.getBook(),
+                bidList.getCreationName(),
+                dateProvider.getNow(),
+                bidList.getRevisionName(),
+                dateProvider.getNow(),
+                bidList.getDealName(),
+                bidList.getDealType(),
+                bidList.getSourceListId(),
+                bidList.getSide()
         ));
     }
 
@@ -52,6 +65,19 @@ public class BidService {
                             bl.setAsk(bidList.getAsk());
                             bl.setBenchmark(bidList.getBenchmark());
                             bl.setBidListDate(dateProvider.getNow());
+                            bl.setCommentary(bidList.getCommentary());
+                            bl.setSecurity(bidList.getSecurity());
+                            bl.setStatus(bidList.getStatus());
+                            bl.setTrader(bidList.getTrader());
+                            bl.setBook(bidList.getBook());
+                            bl.setCreationName(bidList.getCreationName());
+                            bl.setCreationDate(bidList.getCreationDate());
+                            bl.setRevisionName(bidList.getRevisionName());
+                            bl.setRevisionDate(bidList.getRevisionDate());
+                            bl.setDealName(bidList.getDealName());
+                            bl.setDealType(bidList.getDealType());
+                            bl.setSourceListId(bidList.getSourceListId());
+                            bl.setSide(bidList.getSide());
                             bidListRepository.save(bl);
                         },
                         () -> {
