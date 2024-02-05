@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class Application {
 
 	private final UserRepository userRepository;
 
@@ -19,22 +19,5 @@ public class Application implements CommandLineRunner {
 
     public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-	}
-
-	@Override
-	public void run(String... args) {
-
-		userRepository.save(new User(
-				"LeoM",
-				"$2y$10$VJyFLNAl.cvMSN/hgbnFEuBIRXbdprgvgnfFy6vrn6BcnoyOy5Xh2",
-				"Léonard MINOT",
-				"ADMIN")
-		);
-		userRepository.save(new User(
-				"VictorM",
-				"$2y$10$VJyFLNAl.cvMSN/hgbnFEuBIRXbdprgvgnfFy6vrn6BcnoyOy5Xh2",
-				"Victor MINOT",
-				"USER")
-		);
 	}
 }

@@ -3,16 +3,20 @@ package com.nnk.springboot.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
  * Configuration class for defining security settings in the application.
+ * There are two authentication ways: the first one for the rest api,
+ * the second one for the web interface.
  */
 @Configuration
 @EnableWebSecurity
@@ -26,6 +30,41 @@ public class SecurityConfiguration {
         this.customUserDetailService = customUserDetailService;
         this.customAccessDeniedHandler = customAccessDeniedHandler;
     }
+
+    /**
+     * Configure the security filter chain for the Rest API part of the application.
+     * <strong>STATELESS</strong> authentication.
+     * <p>
+     *     <strong>CSRF</strong>: The CSRF is disabled
+     * </p>
+     * <p>
+     *     <strong>URL</strong>: All URLs with /user and /secure require an ADMIN role in the application.
+     *    All other requests must be authenticated
+     * </p>
+     * <p>
+     *     <strong>SESSION MANAGEMENT</strong>: stateless authentication. Credentials must be provided for every requests.
+     * </p>
+     * <p>
+     *     <strong>HTTP BASICS</strong>: default authentication
+     * </p>
+     *
+     * @param http The {@link HttpSecurity}  object used to configure security for HTTP requests (managed by SpringSecurity).
+     *      * @return A {@link SecurityFilterChain} instance representing the configured security filter chain.
+     *      * @throws Exception If an error occurs during configuration.
+     */
+    @Bean
+    @Order(1)
+    SecurityFilterChain apiSecurityFilterChain(HttpSecurity http) throws Exception {
+        return http.securityMatcher("/api/**")
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> {
+                    auth.anyRequest().authenticated();
+                })
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .httpBasic(Customizer.withDefaults())
+                .build();
+    }
+
 
     /**
      * Configure the security filter chain for the application.
@@ -49,6 +88,7 @@ public class SecurityConfiguration {
      * @throws Exception If an error occurs during configuration.
      */
     @Bean
+    @Order(2)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/user/**").hasRole("ADMIN");
