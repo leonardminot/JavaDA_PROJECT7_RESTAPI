@@ -14,6 +14,8 @@ public class HomePage {
     private WebElement homePageCard;
     @FindBy(id = "bid-list-link")
     private WebElement bidListLink;
+    @FindBy(id = "trade-link")
+    private WebElement tradeLink;
 
     private final WebDriver webDriver;
 
@@ -30,6 +32,11 @@ public class HomePage {
     public BidListPage navigateToBidList() {
         bidListLink.click();
         return new BidListPage(webDriver);
+    }
+
+    public TradePage navigateToTrade() {
+        tradeLink.click();
+        return new TradePage(webDriver);
     }
 
 
