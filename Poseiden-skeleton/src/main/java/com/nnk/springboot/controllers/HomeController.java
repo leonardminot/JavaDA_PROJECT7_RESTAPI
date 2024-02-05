@@ -15,8 +15,6 @@ public class HomeController
 		return "home";
 	}
 
-	// Remarque LM : a supprimer ?
-
 	@RequestMapping("/admin/home")
 	public String adminHome(Model model)
 	{

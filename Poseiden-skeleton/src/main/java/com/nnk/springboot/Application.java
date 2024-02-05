@@ -30,5 +30,11 @@ public class Application implements CommandLineRunner {
 				"Léonard MINOT",
 				"ADMIN")
 		);
+		userRepository.save(new User(
+				"VictorM",
+				"$2y$10$VJyFLNAl.cvMSN/hgbnFEuBIRXbdprgvgnfFy6vrn6BcnoyOy5Xh2",
+				"Victor MINOT",
+				"USER")
+		);
 	}
 }

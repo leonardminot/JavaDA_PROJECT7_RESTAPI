@@ -7,22 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("app")
 public class LoginController {
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
-
-    // Remarque LM : je propose de le supprimer car redondant avec le formulaire de base de Spring Security ?
-    @GetMapping("login")
-    public ModelAndView login() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("login");
-        return mav;
+    public LoginController(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    // Remarque LM : Je propose de supprimer ce end point car redondant avec le end point user/list ?
     @GetMapping("secure/article-details")
     public ModelAndView getAllUserArticles() {
         ModelAndView mav = new ModelAndView();
@@ -33,10 +29,11 @@ public class LoginController {
 
     // Important ?
     @GetMapping("error")
-    public ModelAndView error() {
+    public ModelAndView error(Principal principal) {
         ModelAndView mav = new ModelAndView();
         String errorMessage= "You are not authorized for the requested data.";
         mav.addObject("errorMsg", errorMessage);
+        mav.addObject("connectedUser", principal.getName());
         mav.setViewName("403");
         return mav;
     }

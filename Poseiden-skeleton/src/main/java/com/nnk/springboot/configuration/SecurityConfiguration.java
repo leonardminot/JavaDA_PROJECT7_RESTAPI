@@ -16,21 +16,27 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
 
     private final CustomUserDetailService customUserDetailService;
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
 
     @Autowired
-    public SecurityConfiguration(CustomUserDetailService customUserDetailService) {
+    public SecurityConfiguration(CustomUserDetailService customUserDetailService, CustomAccessDeniedHandler customAccessDeniedHandler) {
         this.customUserDetailService = customUserDetailService;
+        this.customAccessDeniedHandler = customAccessDeniedHandler;
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/user/**").hasRole("ADMIN");
+                    auth.requestMatchers("/secure/**").hasRole("ADMIN");
                     auth.anyRequest().authenticated();
                 }).formLogin(Customizer.withDefaults())
                 .logout(logout -> {
                     logout.logoutUrl("/logout");
                     logout.logoutSuccessUrl("/login");
+                })
+                .exceptionHandling(exceptionHandling -> {
+                    exceptionHandling.accessDeniedHandler(customAccessDeniedHandler);
                 })
                 .build();
     }
