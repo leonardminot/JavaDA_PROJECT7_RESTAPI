@@ -12,7 +12,7 @@ public class AddRatingPage {
     private WebElement sandPRatingField;
     @FindBy(id = "fitchRating")
     private WebElement fitchRatingField;
-    @FindBy(id = "orderNumber")
+    @FindBy(id = "order")
     private WebElement orderField;
     @FindBy(id = "add-rating-btn")
     private WebElement addBtnField;

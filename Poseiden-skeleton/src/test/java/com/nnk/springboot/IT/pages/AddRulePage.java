@@ -14,7 +14,7 @@ public class AddRulePage {
     private WebElement jsonField;
     @FindBy(id = "template")
     private WebElement templateField;
-    @FindBy(id = "sqlStr")
+    @FindBy(id = "sql")
     private WebElement sqlField;
     @FindBy(id = "sqlPart")
     private WebElement sqlPartField;

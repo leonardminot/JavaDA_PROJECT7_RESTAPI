@@ -23,7 +23,7 @@ public class RatingPage {
         return waiter.until(ExpectedConditions.visibilityOf(addRatingBtn)).isDisplayed();
     }
 
-    public AddRatingPage addNewRule() {
+    public AddRatingPage addNewRating() {
         addRatingBtn.click();
         return new AddRatingPage(webDriver);
     }
