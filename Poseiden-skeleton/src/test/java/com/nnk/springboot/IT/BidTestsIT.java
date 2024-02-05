@@ -80,7 +80,7 @@ public class BidTestsIT {
         );
         // Then
         assertThat(backBidListPage.isBidListPageDisplayed()).isTrue();
-        BidList actualBidList = bidListRepository.findById(1).orElse(null);
+        BidList actualBidList = bidListRepository.findAll().stream().findFirst().orElse(null);
         assertThat(actualBidList).isNotNull();
         assertThat(actualBidList.getAccount()).isEqualTo("account");
         assertThat(actualBidList.getType()).isEqualTo("type");

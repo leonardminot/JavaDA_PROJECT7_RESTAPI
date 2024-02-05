@@ -68,7 +68,7 @@ public class RatingIT {
 
         // Then
         assertThat(backRatingPage.isRatingPageDisplayed()).isTrue();
-        Rating actualRating = ratingRepository.findById(1).orElse(null);
+        Rating actualRating = ratingRepository.findAll().stream().findFirst().orElse(null);
         assertThat(actualRating).isNotNull();
         assertThat(actualRating.getMoodysRating()).isEqualTo("moodys");
         assertThat(actualRating.getSandPRating()).isEqualTo("sandP");

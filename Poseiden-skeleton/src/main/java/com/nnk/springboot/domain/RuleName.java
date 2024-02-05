@@ -11,7 +11,6 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "rulename")
 public class RuleName {
-    // TODO: Map columns in data table RULENAME with corresponding java fields
     @Id
     @GeneratedValue
     private Integer id;
@@ -27,6 +26,17 @@ public class RuleName {
     private String sqlStr;
     @NotBlank(message = "sqlPart must be not null")
     private String sqlPart;
+
+    public RuleName(String ruleName, String description, String json, String template, String sqlStr, String sqlPart) {
+        this.name = ruleName;
+        this.description = description;
+        this.json = json;
+        this.template = template;
+        this.sqlStr = sqlStr;
+        this.sqlPart = sqlPart;
+    }
+
+    public RuleName() {}
 
     public Integer getId() {
         return id;
@@ -83,15 +93,4 @@ public class RuleName {
     public void setSqlPart(String sqlPart) {
         this.sqlPart = sqlPart;
     }
-
-    public RuleName(String ruleName, String description, String json, String template, String sqlStr, String sqlPart) {
-        this.name = ruleName;
-        this.description = description;
-        this.json = json;
-        this.template = template;
-        this.sqlStr = sqlStr;
-        this.sqlPart = sqlPart;
-    }
-
-    public RuleName() {}
 }

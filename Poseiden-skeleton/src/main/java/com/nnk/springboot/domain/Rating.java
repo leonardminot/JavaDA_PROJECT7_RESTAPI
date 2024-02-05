@@ -10,7 +10,6 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 @Table(name = "rating")
 public class Rating {
-    // TODO: Map columns in data table RATING with corresponding java fields
     @Id
     @GeneratedValue
     private Integer id;
@@ -22,6 +21,15 @@ public class Rating {
     private String fitchRating;
     @NotNull
     private Integer orderNumber;
+
+    public Rating(String moodysRating, String sandPRating, String fitchRating, Integer orderNumber) {
+        this.orderNumber = orderNumber;
+        this.moodysRating = moodysRating;
+        this.fitchRating = fitchRating;
+        this.sandPRating = sandPRating;
+    }
+
+    public Rating() {}
 
     public Integer getId() {
         return id;
@@ -66,13 +74,4 @@ public class Rating {
     public void setOrderNumber(Integer orderNumber) {
         this.orderNumber = orderNumber;
     }
-
-    public Rating(String moodysRating, String sandPRating, String fitchRating, Integer orderNumber) {
-        this.orderNumber = orderNumber;
-        this.moodysRating = moodysRating;
-        this.fitchRating = fitchRating;
-        this.sandPRating = sandPRating;
-    }
-
-    public Rating() {}
 }

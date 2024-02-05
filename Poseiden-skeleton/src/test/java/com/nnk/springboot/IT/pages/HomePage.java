@@ -31,7 +31,7 @@ public class HomePage {
     }
 
     public boolean isHomePageDisplayed() {
-        WebDriverWait waiter = new WebDriverWait(webDriver, Duration.ofSeconds(2));
+        WebDriverWait waiter = new WebDriverWait(webDriver, Duration.ofSeconds(5));
         return waiter.until(ExpectedConditions.visibilityOf(homePageCard)).isDisplayed();
     }
 

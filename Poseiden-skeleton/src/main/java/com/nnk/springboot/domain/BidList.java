@@ -1,16 +1,17 @@
 package com.nnk.springboot.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "bidlist")
 public class BidList {
-    // TODO: Map columns in data table BIDLIST with corresponding java fields
     @Id
     @GeneratedValue
     private Integer bidListId;
@@ -43,17 +44,6 @@ public class BidList {
     private String sourceListId;
     private String side;
 
-    public BidList(String account, String type, Double bidQuantity, Double askQuantity, Double bid, Double ask, String benchmark, Timestamp bidListDate) {
-        this.account = account;
-        this.type = type;
-        this.bidQuantity = bidQuantity;
-        this.askQuantity = askQuantity;
-        this.bid = bid;
-        this.ask = ask;
-        this.benchmark = benchmark;
-        this.bidListDate = bidListDate;
-    }
-
     public BidList(String account, String type, Double bidQuantity, Double askQuantity, Double bid, Double ask, String benchmark) {
         this.account = account;
         this.type = type;
@@ -85,11 +75,31 @@ public class BidList {
         this.side = side;
     }
 
-    public BidList() {}
-
-    public BidList(String toDetermine1, String toDetermine2, Double bidQuantity) {
+    public BidList(String account, String type, Double bidQuantity, Double askQuantity, Double bid, Double ask, String benchmark, Timestamp bidListDate, String commentary, String security, String status, String trader, String book, String creationName, Timestamp creationDate, String revisionName, Timestamp revisionDate, String dealName, String dealType, String sourceListId, String side) {
+        this.account = account;
+        this.type = type;
         this.bidQuantity = bidQuantity;
+        this.askQuantity = askQuantity;
+        this.bid = bid;
+        this.ask = ask;
+        this.benchmark = benchmark;
+        this.bidListDate = bidListDate;
+        this.commentary = commentary;
+        this.security = security;
+        this.status = status;
+        this.trader = trader;
+        this.book = book;
+        this.creationName = creationName;
+        this.creationDate = creationDate;
+        this.revisionName = revisionName;
+        this.revisionDate = revisionDate;
+        this.dealName = dealName;
+        this.dealType = dealType;
+        this.sourceListId = sourceListId;
+        this.side = side;
     }
+
+    public BidList() {}
 
     public Integer getBidListId() {
         return bidListId;
@@ -264,30 +274,6 @@ public class BidList {
     }
 
     public void setSide(String side) {
-        this.side = side;
-    }
-
-    public BidList(String account, String type, Double bidQuantity, Double askQuantity, Double bid, Double ask, String benchmark, Timestamp bidListDate, String commentary, String security, String status, String trader, String book, String creationName, Timestamp creationDate, String revisionName, Timestamp revisionDate, String dealName, String dealType, String sourceListId, String side) {
-        this.account = account;
-        this.type = type;
-        this.bidQuantity = bidQuantity;
-        this.askQuantity = askQuantity;
-        this.bid = bid;
-        this.ask = ask;
-        this.benchmark = benchmark;
-        this.bidListDate = bidListDate;
-        this.commentary = commentary;
-        this.security = security;
-        this.status = status;
-        this.trader = trader;
-        this.book = book;
-        this.creationName = creationName;
-        this.creationDate = creationDate;
-        this.revisionName = revisionName;
-        this.revisionDate = revisionDate;
-        this.dealName = dealName;
-        this.dealType = dealType;
-        this.sourceListId = sourceListId;
         this.side = side;
     }
 

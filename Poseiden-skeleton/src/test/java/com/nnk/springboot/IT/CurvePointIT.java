@@ -60,7 +60,7 @@ public class CurvePointIT {
 
         // Then
         assertThat(backCurvePointPage.isBidListPageDisplayed()).isTrue();
-        CurvePoint actualCurvePoint = curvePointRepository.findById(1).orElse(null);
+        CurvePoint actualCurvePoint = curvePointRepository.findAll().stream().findFirst().orElse(null);
         assertThat(actualCurvePoint).isNotNull();
         assertThat(actualCurvePoint.getCurveId()).isEqualTo(10);
         assertThat(actualCurvePoint.getTerm()).isEqualTo(11d);

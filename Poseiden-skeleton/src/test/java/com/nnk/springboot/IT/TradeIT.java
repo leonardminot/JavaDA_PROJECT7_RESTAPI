@@ -82,7 +82,7 @@ public class TradeIT {
 
         // Then
         assertThat(backTradePage.isTradePageDisplayed()).isTrue();
-        Trade actualTrade = tradeRepository.findById(1).orElse(null);
+        Trade actualTrade = tradeRepository.findAll().stream().findFirst().orElse(null);
         assertThat(actualTrade).isNotNull();
         assertThat(actualTrade.getAccount()).isEqualTo("account");
         assertThat(actualTrade.getType()).isEqualTo("type");

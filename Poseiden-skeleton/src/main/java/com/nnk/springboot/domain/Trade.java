@@ -45,6 +45,53 @@ public class Trade {
     private String sourceListId;
     private String side;
 
+    public Trade() {}
+    public Trade(String account, String type) {
+        this.account = account;
+        this.type = type;
+    }
+
+    public Trade(String account, String type, Double buyQuantity, Double sellQuantity, Double buyPrice, Double sellPrice, String benchmark) {
+        this.account = account;
+        this.type = type;
+        this.buyQuantity = buyQuantity;
+        this.sellQuantity = sellQuantity;
+        this.buyPrice = buyPrice;
+        this.sellPrice = sellPrice;
+        this.benchmark = benchmark;
+    }
+
+    public Trade(String account, String type, Double buyQuantity, Double sellQuantity, Double buyPrice, Double sellPrice, String benchmark, Timestamp tradeDate) {
+        this.account = account;
+        this.type = type;
+        this.buyQuantity = buyQuantity;
+        this.sellQuantity = sellQuantity;
+        this.buyPrice = buyPrice;
+        this.sellPrice = sellPrice;
+        this.benchmark = benchmark;
+        this.tradeDate = tradeDate;
+    }
+
+    public Trade(String account, String type, Double buyQuantity, Double sellQuantity, Double buyPrice, Double sellPrice, String benchmark, String commentary, String security, String status, String trader, String book, String creationName, String revisionName, String dealName, String dealType, String sourceListId, String side) {
+        this.account = account;
+        this.type = type;
+        this.buyQuantity = buyQuantity;
+        this.sellQuantity = sellQuantity;
+        this.buyPrice = buyPrice;
+        this.sellPrice = sellPrice;
+        this.benchmark = benchmark;
+        this.commentary = commentary;
+        this.security = security;
+        this.status = status;
+        this.trader = trader;
+        this.book = book;
+        this.creationName = creationName;
+        this.revisionName = revisionName;
+        this.dealName = dealName;
+        this.dealType = dealType;
+        this.sourceListId = sourceListId;
+        this.side = side;
+    }
     public Trade(String account, String type, Double buyQuantity, Double sellQuantity, Double buyPrice, Double sellPrice, String benchmark, Timestamp tradeDate, String commentary, String security, String status, String trader, String book, String creationName, Timestamp creationDate, String revisionName, Timestamp revisionDate, String dealName, String dealType, String sourceListId, String side) {
         this.account = account;
         this.type = type;
@@ -68,6 +115,7 @@ public class Trade {
         this.sourceListId = sourceListId;
         this.side = side;
     }
+
 
     public String getCommentary() {
         return commentary;
@@ -243,54 +291,5 @@ public class Trade {
 
     public String getAccount() {
         return account;
-    }
-
-    public Trade(String account, String type) {
-        this.account = account;
-        this.type = type;
-    }
-
-    public Trade(String account, String type, Double buyQuantity, Double sellQuantity, Double buyPrice, Double sellPrice, String benchmark) {
-        this.account = account;
-        this.type = type;
-        this.buyQuantity = buyQuantity;
-        this.sellQuantity = sellQuantity;
-        this.buyPrice = buyPrice;
-        this.sellPrice = sellPrice;
-        this.benchmark = benchmark;
-    }
-
-    public Trade(String account, String type, Double buyQuantity, Double sellQuantity, Double buyPrice, Double sellPrice, String benchmark, Timestamp tradeDate) {
-        this.account = account;
-        this.type = type;
-        this.buyQuantity = buyQuantity;
-        this.sellQuantity = sellQuantity;
-        this.buyPrice = buyPrice;
-        this.sellPrice = sellPrice;
-        this.benchmark = benchmark;
-        this.tradeDate = tradeDate;
-    }
-
-    public Trade() {}
-
-    public Trade(String account, String type, Double buyQuantity, Double sellQuantity, Double buyPrice, Double sellPrice, String benchmark, String commentary, String security, String status, String trader, String book, String creationName, String revisionName, String dealName, String dealType, String sourceListId, String side) {
-        this.account = account;
-        this.type = type;
-        this.buyQuantity = buyQuantity;
-        this.sellQuantity = sellQuantity;
-        this.buyPrice = buyPrice;
-        this.sellPrice = sellPrice;
-        this.benchmark = benchmark;
-        this.commentary = commentary;
-        this.security = security;
-        this.status = status;
-        this.trader = trader;
-        this.book = book;
-        this.creationName = creationName;
-        this.revisionName = revisionName;
-        this.dealName = dealName;
-        this.dealType = dealType;
-        this.sourceListId = sourceListId;
-        this.side = side;
     }
 }

@@ -72,7 +72,7 @@ public class RuleIT {
 
         // Then
         assertThat(backRulePage.isRulePageDisplayed()).isTrue();
-        RuleName actualRule = ruleNameRepository.findById(1).orElse(null);
+        RuleName actualRule = ruleNameRepository.findAll().stream().findFirst().orElse(null);
         assertThat(actualRule).isNotNull();
         assertThat(actualRule.getName()).isEqualTo("name");
         assertThat(actualRule.getDescription()).isEqualTo("description");

@@ -19,7 +19,7 @@ public class RatingPage {
         PageFactory.initElements(webDriver, this);
     }
     public boolean isRatingPageDisplayed() {
-        WebDriverWait waiter = new WebDriverWait(webDriver, Duration.ofSeconds(2));
+        WebDriverWait waiter = new WebDriverWait(webDriver, Duration.ofSeconds(5));
         return waiter.until(ExpectedConditions.visibilityOf(addRatingBtn)).isDisplayed();
     }
 
