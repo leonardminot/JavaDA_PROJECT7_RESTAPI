@@ -2,6 +2,7 @@ package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.CurvePoint;
 import com.nnk.springboot.repositories.CurvePointRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class CurvePointService {
         this.dateProvider = dateProvider;
     }
 
+    @Transactional
     public CurvePoint add(CurvePoint curvePointToAdd) {
         return curvePointRepository.save(new CurvePoint(
                 curvePointToAdd.getCurveId(),
@@ -36,6 +38,7 @@ public class CurvePointService {
         return curvePointRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public CurvePoint update(CurvePoint curvePoint, Integer id) {
         curvePointRepository.findById(id)
                 .ifPresentOrElse(
@@ -52,6 +55,7 @@ public class CurvePointService {
         return curvePoint;
     }
 
+    @Transactional
     public void delete(Integer id) {
         curvePointRepository.deleteById(id);
     }

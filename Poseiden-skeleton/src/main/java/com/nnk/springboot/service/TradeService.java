@@ -2,6 +2,7 @@ package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.repositories.TradeRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class TradeService {
         this.dateProvider = dateProvider;
     }
 
+    @Transactional
     public Trade add(Trade trade) {
         return tradeRepository.save(new Trade(
                 trade.getAccount(),
@@ -52,6 +54,7 @@ public class TradeService {
         return tradeRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public Trade update(Trade trade, int id) {
         tradeRepository.findById(id)
                 .ifPresentOrElse(
@@ -85,6 +88,7 @@ public class TradeService {
         return trade;
     }
 
+    @Transactional
     public void delete(int id) {
         tradeRepository.deleteById(id);
     }

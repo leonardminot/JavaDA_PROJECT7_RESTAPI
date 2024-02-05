@@ -2,6 +2,7 @@ package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.Rating;
 import com.nnk.springboot.repositories.RatingRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class RatingService {
         this.ratingRepository = ratingRepository;
     }
 
+    @Transactional
     public Rating add(Rating rating) {
         return ratingRepository.save(rating);
     }
@@ -28,6 +30,7 @@ public class RatingService {
         return ratingRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public Rating update(Rating rating, int id) {
         ratingRepository.findById(id).ifPresentOrElse(r -> {
                     r.setFitchRating(rating.getFitchRating());
@@ -43,6 +46,7 @@ public class RatingService {
         return rating;
     }
 
+    @Transactional
     public void delete(int id) {
         ratingRepository.deleteById(id);
     }

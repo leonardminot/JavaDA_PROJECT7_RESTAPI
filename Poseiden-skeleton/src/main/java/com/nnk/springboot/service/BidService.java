@@ -2,6 +2,7 @@ package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class BidService {
     }
 
 
+    @Transactional
     public BidList add(BidList bidList) {
         return bidListRepository.save(new BidList(
                 bidList.getAccount(),
@@ -53,6 +55,7 @@ public class BidService {
         return bidListRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public BidList update(BidList bidList, Integer id) {
         bidListRepository.findById(id)
                 .ifPresentOrElse(
@@ -88,6 +91,7 @@ public class BidService {
         return bidList;
     }
 
+    @Transactional
     public void delete(int id) {
         bidListRepository.deleteById(id);
     }

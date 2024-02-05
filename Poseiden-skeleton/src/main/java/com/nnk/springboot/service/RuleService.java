@@ -2,6 +2,7 @@ package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.repositories.RuleNameRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class RuleService {
         this.ruleNameRepository = ruleNameRepository;
     }
 
+    @Transactional
     public RuleName add(RuleName ruleName) {
         return ruleNameRepository.save(ruleName);
     }
@@ -28,6 +30,7 @@ public class RuleService {
         return ruleNameRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public RuleName update(RuleName rule, int id) {
         ruleNameRepository.findById(id)
                 .ifPresentOrElse(
@@ -47,6 +50,7 @@ public class RuleService {
         return rule;
     }
 
+    @Transactional
     public void delete(int id) {
         ruleNameRepository.deleteById(id);
     }
