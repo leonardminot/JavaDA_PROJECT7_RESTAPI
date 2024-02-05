@@ -16,6 +16,12 @@ public class HomePage {
     private WebElement bidListLink;
     @FindBy(id = "trade-link")
     private WebElement tradeLink;
+    @FindBy(id = "curve-point-link")
+    private WebElement curvePointLink;
+    @FindBy(id = "rating-link")
+    private WebElement ratingLink;
+    @FindBy(id = "rule-name-link")
+    private WebElement ruleLink;
 
     private final WebDriver webDriver;
 
@@ -37,6 +43,21 @@ public class HomePage {
     public TradePage navigateToTrade() {
         tradeLink.click();
         return new TradePage(webDriver);
+    }
+
+    public CurvePointPage navigateToCurvePoint() {
+        curvePointLink.click();
+        return new CurvePointPage(webDriver);
+    }
+
+    public RatingPage navigateToRatingPage() {
+        ratingLink.click();
+        return new RatingPage(webDriver);
+    }
+
+    public RulePage navigateToRulePage() {
+        ruleLink.click();
+        return new RulePage(webDriver);
     }
 
 
