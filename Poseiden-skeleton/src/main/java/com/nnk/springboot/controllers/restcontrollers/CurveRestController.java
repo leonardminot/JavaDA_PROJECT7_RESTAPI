@@ -32,4 +32,14 @@ public class CurveRestController {
     public void addCurvePoint(@RequestBody @Valid CurvePoint curvePoint) {
         curvePointService.add(curvePoint);
     }
+
+    @PutMapping("curve")
+    public void updateCurvePoint(@RequestBody @Valid CurvePoint curvePoint) {
+        curvePointService.update(curvePoint, curvePoint.getCurveId());
+    }
+
+    @DeleteMapping("curve/{id}")
+    public void deleteCurvePoint(@PathVariable("id") Integer id) {
+        curvePointService.delete(id);
+    }
 }
