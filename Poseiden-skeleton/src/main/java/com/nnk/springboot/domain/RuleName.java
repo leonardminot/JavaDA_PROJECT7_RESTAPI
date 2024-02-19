@@ -1,9 +1,6 @@
 package com.nnk.springboot.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 import java.sql.Timestamp;
@@ -15,16 +12,22 @@ public class RuleName {
     @GeneratedValue
     private Integer id;
     @NotBlank(message = "name must be not null")
+    @Column(length = 125)
     private String name;
     @NotBlank(message = "description must be not null")
+    @Column(length = 125)
     private String description;
     @NotBlank(message = "json must be not null")
+    @Column(length = 125)
     private String json;
     @NotBlank(message = "template must be not null")
+    @Column(length = 125)
     private String template;
     @NotBlank(message = "sqlStr must be not null")
+    @Column(length = 125)
     private String sqlStr;
     @NotBlank(message = "sqlPart must be not null")
+    @Column(length = 125)
     private String sqlPart;
 
     public RuleName(String ruleName, String description, String json, String template, String sqlStr, String sqlPart) {
