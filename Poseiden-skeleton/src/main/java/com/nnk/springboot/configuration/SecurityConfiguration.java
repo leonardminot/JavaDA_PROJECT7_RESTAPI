@@ -35,9 +35,6 @@ public class SecurityConfiguration {
      * Configure the security filter chain for the Rest API part of the application.
      * <strong>STATELESS</strong> authentication.
      * <p>
-     *     <strong>CSRF</strong>: The CSRF is disabled
-     * </p>
-     * <p>
      *     <strong>URL</strong>: All URLs with /user and /secure require an ADMIN role in the application.
      *    All other requests must be authenticated
      * </p>
@@ -56,7 +53,6 @@ public class SecurityConfiguration {
     @Order(1)
     SecurityFilterChain apiSecurityFilterChain(HttpSecurity http) throws Exception {
         return http.securityMatcher("/api/**")
-                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/api/v1/user/**").hasRole("ADMIN");
                     auth.anyRequest().authenticated();
